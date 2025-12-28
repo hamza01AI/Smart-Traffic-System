@@ -4,6 +4,10 @@
 #include <vector>
 #include <string>
 using namespace std;
+void clearScreen() {
+    cout << "\033[2J\033[1;1H";
+}
+
 
 int westrandom(int min, int max) {
     static mt19937 gen(chrono::steady_clock::now().time_since_epoch().count());
@@ -11,6 +15,14 @@ int westrandom(int min, int max) {
     return dist(gen);
 }
 
+ int reducewest(const int &value, westJunction junc)
+{
+  value=value-1;
+  if(value==0)
+  {
+    reduce 1;
+  }
+}
 struct car {
     char represent = 'c';
     int col;
@@ -18,7 +30,7 @@ struct car {
     string position;
 };
 
-struct WestJunction {
+struct westjunction {
     int noofcars = 0;
     char signal = 'R';
 };
@@ -61,22 +73,44 @@ void printVertical(const char westroad[5][15], const char eastroad[5][15]) {
     }
 }
 
-void startWestCar(char westroad[5][15], vector<car>& westcar) {
+void startWestCar(char westroad[5][15], vector<car>& westcar,int value,const westjunction &westjunc) {
+
+    if(char check=reducewest(value,westjunc)==1)
+    {
     car temp;
     temp.row = 1;
     temp.col = 0;
     temp.position = "West";
     westroad[temp.row][temp.col] = temp.represent;
     westcar.push_back(temp);
+    }
+}
+
+
+void Run()
+{
+    while
+    {
+        clearscreen();
+
+    }
 }
 
 int main() {
     char westroad[5][15];
     char eastroad[5][15];
+    int countwest=westrandom(3,7);
 
     vector<car> westcar;
     WestJunction westJunc;
     EastJunction eastJunc;
+
+    while(true)
+    { clearscreen();
+
+
+    }
+
 
     buildWestRoad(westroad);
     buildEastRoad(eastroad);
